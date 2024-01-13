@@ -1,0 +1,39 @@
+{
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "autoscaling:SetDesiredCapacity",
+        "autoscaling:TerminateInstanceInAutoScalingGroup"
+      ],
+      "Resource": "arn:${Partition}:autoscaling:${Region}:${AccountId}:autoScalingGroup:*:autoScalingGroupName/*",
+      "Condition": {
+        "StringEquals": {
+          "aws:ResourceTag/k8s.io/cluster-autoscaler/${ClusterName}": "owned"
+        }
+      }
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "eks:DescribeNodegroup"
+      ],
+      "Resource": "arn:${Partition}:eks:${Region}:${AccountId}:nodegroup/${ClusterName}/*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "autoscaling:DescribeAutoScalingGroups",
+        "autoscaling:DescribeAutoScalingInstances",
+        "autoscaling:DescribeScalingActivities",
+        "autoscaling:DescribeTags",
+        "ec2:DescribeImages",
+        "ec2:DescribeInstanceTypes",
+        "ec2:DescribeLaunchTemplateVersions",
+        "ec2:GetInstanceTypesFromInstanceRequirements"
+      ],
+      "Resource": "*"
+    }
+  ],
+  "Version": "2012-10-17"
+}
