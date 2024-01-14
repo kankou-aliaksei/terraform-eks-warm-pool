@@ -12,7 +12,7 @@ execute_warmup_tasks() {
   echo "Executing warm-up tasks at $current_date_time"
   # Perform tasks required during the warm-up stage
   # For instance: downloading files, configuring settings, etc.
-  sleep 1m # Simulating a time-consuming task. Remove this line in production.
+  sleep 2m # Simulating a time-consuming task. Remove this line in production.
 }
 
 # Function to complete the lifecycle action
