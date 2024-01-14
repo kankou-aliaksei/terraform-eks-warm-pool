@@ -9,6 +9,7 @@ DATETIME=$(date -u '+%Y_%m_%d_T%H:%M:%SZ')
 echo "Script running at $DATETIME"
 
 execute_warmup_tasks() {
+  DATETIME=$(date -u '+%Y_%m_%d_T%H:%M:%SZ')
   echo "Executing warm-up tasks at $DATETIME"
   # Perform tasks required during the warm-up stage
   # For instance: downloading files, configuring settings, etc.
