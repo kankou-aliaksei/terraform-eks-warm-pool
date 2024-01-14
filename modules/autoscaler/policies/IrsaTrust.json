@@ -1,0 +1,18 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Federated": "arn:${Partition}:iam::${AccountId}:oidc-provider/${OidcProvider}"
+      },
+      "Action": "sts:AssumeRoleWithWebIdentity",
+      "Condition": {
+        "StringEquals": {
+          "${OidcProvider}:sub": "system:serviceaccount:kube-system:cluster-autoscaler",
+          "${OidcProvider}:aud": "sts.amazonaws.com"
+        }
+      }
+    }
+  ]
+}
